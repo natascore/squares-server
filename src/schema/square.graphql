@@ -1,0 +1,19 @@
+type Square {
+  id: Int!
+  status: String!
+}
+  
+type Query {
+  getSquare(id: Int!): Square!
+  allSquares: [Square]
+}
+  
+type Mutation {
+  createSquare(status: String!): Square!
+  updateSquare(id: Int!, status: String!): Square!
+}
+
+type Subscription {
+  squareChanged: Square!
+  squareAdded: Square!
+}

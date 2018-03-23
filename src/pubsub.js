@@ -1,0 +1,12 @@
+import { PubSub } from 'graphql-subscriptions';
+import { RedisPubSub } from 'graphql-redis-subscriptions';
+export const pubsub = new RedisPubSub({
+  connection: {
+    host: 'redis',
+    port: 6379,
+    retry_strategy: options => {
+      // reconnect after
+      return Math.max(options.attempt * 100, 3000);
+    }
+  }
+});
